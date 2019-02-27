@@ -1,5 +1,6 @@
 		const express = require('express');
 		const app = express();
+		const shortID = require('shortid');
 		var port = 3000;
 		var low = require('lowdb');
 		var bodyParser = require('body-parser');
@@ -44,10 +45,20 @@
 		});
 		
 		app.post('/users/create',function (req,res) {
+		req.body.id = shortID.generate();
 		db.get('users').push(req.body).write();
 		res.redirect('/users');	// body...
 		});
 		
+		app.get('/users/:id',function(req,res){
+			var id =req.params.id;
+
+			var user = db.get('users').find({id: id}).value();
+			res.render('users/view',{
+				user:user
+			});
+		});
+
 		
 		app.listen(3000, function() {
 		console.log('Server listening on port 3000');
