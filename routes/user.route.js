@@ -1,45 +1,18 @@
 var express = require('express');
 var router = express.Router();
-const shortID = require('shortid');
+var controller = require('../controller/user.controller.js');
 var db = require('../db');
 
-	router.get('/', function (req,res) {
-		res.render('users/index', {
-		users : db.get('users').value()
-		});
-		});
+	router.get('/',controller.index );
 		
 	/*search function*/
-	router.get('/search',function(req,res){
-		var q = req.query.q;
-		var tempArr = db.get('users').value();
-		var matchedUsers = tempArr.filter(function(user) {
-			return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-		});
-		console.log(matchedUsers);
-		res.render('users/index',{
-			users : matchedUsers
-			});
-		});
+	router.get('/search',controller.search);
 		
 		/*create page*/
-		router.get('/create',function (req,res) {
-		res.render('users/create')
-		});
+		router.get('/create',controller.get);
 		/*create function */
-		router.post('/create',function (req,res) {
-		req.body.id = shortID.generate();
-		db.get('users').push(req.body).write();
-		res.redirect('/users');	// body...
-		});
+		router.post('/create',controller.create);
 
 		/* each user page*/
-		router.get('/:id',function(req,res){
-			var id =req.params.id;
-
-			var user = db.get('users').find({id: id}).value();
-			res.render('users/view',{
-				user:user
-			});
-		});
+		router.get('/:id',controller.view);
 module.exports = router;
