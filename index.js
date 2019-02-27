@@ -30,11 +30,9 @@
 	app.get('/users/search',function(req,res){
 		var q = req.query.q;
 		var tempArr = db.get('users').value();
-		console.log(tempArr[1].name);
-
-		var matchedUsers = tempArr.filter(function(user){
-				return user.name.toLowerCase().indexOf(q.toLowerCase) !== -1;
-			});
+		var matchedUsers = tempArr.filter(function(user) {
+			return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+		});
 		console.log(matchedUsers);
 		res.render('users/index',{
 			users : matchedUsers
