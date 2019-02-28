@@ -1,7 +1,17 @@
-h1 Create user
+extends ../layout/common.pug
+block content
 
-form(action="/users/create", method="POST")
-	label Name
-	input(name="name", type="text")
-	button Create
+	h1 Create user
+	if error
+		each err in error
+			.alert.alert-danger=err
+	form(action="/users/create", method="POST")
+		.form-group
+			label(for="name") Name
+			input#name(name="name", type="text", class="form-control", value= values ? values.name : '')
+		
+		.form-group
+			label(for="phone") Phone
+			input#phone(name="phone", type="text", class="form-control", value=values ? values.phone : '')
+		button.btn.btn-primary Create
 
