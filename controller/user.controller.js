@@ -25,22 +25,7 @@ module.exports.get = function (req,res) {
 
 module.exports.create = function (req,res) {
 		req.body.id = shortID.generate();
-		var error = [];
-		if(!req.body.name){
-			error.push('Name is required');
-		}
-		if(!req.body.phone){
-			error.push('Phone is required');
-		}
-		if(error.length){
-			res.render('users/create',{
-				error: error,
-				values: req.body
-
-			});
-			return;
-		}
-
+		
 		db.get('users').push(req.body).write();
 		res.redirect('/users');	// body...
 		};
