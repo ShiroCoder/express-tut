@@ -12,11 +12,11 @@ module.exports.search = function(req,res){
 		var matchedUsers = db.get('users').value().filter(function(user) {
 			return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
 		});
-		console.log(matchedUsers);
 		res.render('users/index',{
 			users : matchedUsers
 			});
 		};
+
 
 module.exports.get = function (req,res) {
 		res.render('users/create')
