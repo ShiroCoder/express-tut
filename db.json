@@ -1,41 +1,11 @@
 {
   "users": [
     {
-      "name": "dat ",
-      "id": "lCyk91FY6"
-    },
-    {
-      "name": "tan ",
-      "id": "vjrp_uhBa"
-    },
-    {
-      "name": "linh",
-      "id": "7-9hM46tS"
-    },
-    {
-      "name": "hai",
-      "id": "fYFDwygvB"
-    },
-    {
-      "name": "tung ",
-      "id": "PQzQ5dD-n"
-    },
-    {
-      "name": "tuan",
-      "id": "7fh66TOLz"
-    },
-    {
-      "name": "long",
-      "id": "j2HNHtR23"
-    },
-    {
-      "name": "tung",
-      "id": "M1RlQpl-D"
-    },
-    {
       "name": "Đào Duy Tân",
       "phone": "0968325920",
-      "id": "OWM95c9mz"
+      "id": "OWM95c9mz",
+      "email": "coleanhdasaipro97@gmail.com",
+      "password": "duytan231297"
     },
     {
       "name": "hoang",

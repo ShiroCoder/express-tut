@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var controller = require('../controller/user.controller.js');
 var validate = require('../controller/user.validate.js');
+var authMiddleware = require('../middleware/auth.middleware.js');
+	router.get('./', authMiddleware.requireAuth,controller.index);
 
 	router.get('/',controller.index );
 		
