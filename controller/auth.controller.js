@@ -1,16 +1,16 @@
-var db = require('../db');
+var db = require('../db.js');
 
 module.exports.login = function (req, res) {
 	res.render('auth/login')
-	// body...
 }
-
 module.exports.postLogin = function(req,res) {
 	var email = req.body.email;
 	var password =req.body.password;
+
 	var user = db.get('users').find({email: email}).value();
+
 	if(!user){
-		res.render('auth/login',{
+		res.render('auth/login', {
 			errors: [
 				'User does not exist'
 			],
@@ -27,10 +27,10 @@ module.exports.postLogin = function(req,res) {
 			],
 			values : req.body
 		});
-		return ;
+		return ;	
 	}		
-	res.cookie('userId',user.id);
-	res.redirect('../users');
+	res.cookie('userId', user.id);
+	res.redirect('/users');
 
 }
 

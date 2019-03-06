@@ -4,6 +4,7 @@
 		var bodyParser = require('body-parser');
 		var userRoutes = require('./routes/user.route');
 		var authRoute = require('./routes/auth.route.js');
+		var authMiddleware = require('./middleware/auth.middleware.js')
 		const app = express();
 		var cookieParser = require('cookie-parser');
 
@@ -14,11 +15,12 @@
 		app.use(bodyParser.urlencoded({ extended: true }));
 		
 	/*main page*/
+		app.use(cookieParser());
 		app.get('/', function (req, res) {
 		res.render('index');
 		});
 
-		app.use('/users',userRoutes);
+		app.use('/users', authMiddleware.requireAuth, userRoutes);
 		app.use('/auth', authRoute);
 		
 		app.listen(3000, function() {

@@ -3,7 +3,7 @@ var router = express.Router();
 var controller = require('../controller/user.controller.js');
 var validate = require('../controller/user.validate.js');
 var authMiddleware = require('../middleware/auth.middleware.js');
-	router.get('./', authMiddleware.requireAuth,controller.index);
+	
 
 	router.get('/',controller.index );
 		
@@ -12,9 +12,12 @@ var authMiddleware = require('../middleware/auth.middleware.js');
 		
 		/*create page*/
 	router.get('/create',controller.get);
-		/*create function */
-	router.post('/create', validate.validate, controller.create);
 
 		/* each user page*/
 	router.get('/:id',controller.view);
+		
+		/*create function */
+	router.post('/create', validate.validate, controller.create);
+
+
 module.exports = router;
