@@ -1,4 +1,6 @@
 		/*define stuff*/
+		require('dotenv').config();
+		console.log(process.env.SESSION_SECRET);
 		const express = require('express');
 		var port = 3000;
 		var bodyParser = require('body-parser');
@@ -15,7 +17,7 @@
 		app.use(bodyParser.urlencoded({ extended: true }));
 		
 	/*main page*/
-		app.use(cookieParser());
+		app.use(cookieParser(process.env.SESSION_SECRET));
 		app.get('/', function (req, res) {
 		res.render('index');
 		});
