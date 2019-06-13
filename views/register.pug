@@ -1,0 +1,25 @@
+extends ./layout/common.pug
+block content
+	h1 Register new account 
+	if error
+		each err in error
+			.alert.alert-danger=err
+	form(action="/users/create", method="POST")
+		.form-group
+			label(for="email") Email
+			input#email(name="email", type="text", class="form-control", value=values ? values.email : '')
+
+		.form-group
+			label(for="name") Name
+			input#name(name="name", type="text", class="form-control", value= values ? values.name : '')
+		.form-group
+			label(for="password") Password
+			input#password(name="password", type="text", class="form-control", value= values ? values.password : '')
+		.form-group
+			label(for="repass") Re-type password
+			input#name(name="repass", type="text", class="form-control", value= values ? values.repass : values.password)
+		
+		.form-group
+			label(for="phone") Phone
+			input#phone(name="phone", type="text", class="form-control", value=values ? values.phone : '')
+		button.btn.btn-primary Register

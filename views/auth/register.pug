@@ -1,0 +1,24 @@
+extends ../layout/common.pug
+block content
+	h1 Register
+	if errors
+		each error in errors
+			.alert.alert-danger=error
+	form(method="POST")
+		.form-group
+			label(for="email") Email
+			input#name(name="email", type="text", class="form-control", value= values ? values.email : '')
+		
+		.form-group
+			label(for="password") Password
+			input#password(name="password", type="password", class="form-control", value=values ? values.password : '')
+		.form-group
+			label(for="repassword") Retype Password
+			input#repassword(name="repassword", type="password", class="form-control", value=values ? values.password : '')
+		.form-group
+			label(for="name") Name
+			input#name(name="name", type="text", class="form-control", value=values ? values.password : '')
+		.form-group
+			label(for="phone") Phone
+			input#phone(name="phone", type="text", class="form-control", value=values ? values.password : '')		
+		button.btn.btn-primary Register

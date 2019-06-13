@@ -1,0 +1,20 @@
+extends ../layout/common.pug
+block content
+
+	h1 Create user
+	if error
+		each err in error
+			.alert.alert-danger=err
+	form(action="/users/create", method="POST", enctype="multipart/form-data")
+		.form-group
+			label(for="name") Name
+			input#name(name="name", type="text", class="form-control", value= values ? values.name : '')
+		
+		.form-group
+			label(for="phone") Phone
+			input#phone(name="phone", type="text", class="form-control", value=values ? values.phone : '')
+		.form-group
+			label(for="avatar") Avatar
+			input#avatar.form-control-file(name="avatar", type="file")
+		button.btn.btn-primary Create
+
