@@ -19,7 +19,10 @@ var upload = multer({dest: './public/uploads/'});
 	router.get('/:id',controller.view);
 		
 		/*create function */
-	router.post('/create', validate.validate, controller.create);
+	router.post('/create', 
+		upload.single('avatar'), 
+		validate.validate, 
+		controller.create);
 
 
 module.exports = router;
